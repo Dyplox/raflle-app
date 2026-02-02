@@ -1,6 +1,6 @@
 # Gran Rifa App 🏆
 
-Esta es una aplicación web moderna para realizar sorteos y rifas digitales de manera emocionante y visual. Construida con React y Vite, diseñada para eventos en vivo con animaciones de celebración.
+Esta es una aplicación web moderna para realizar sorteos y rifas digitales de manera emocionante y visual. Construida con React y Vite, diseñada para eventos en vivo con animaciones de celebración de colores doradas para emocionar al ganador.
 
 ## Características
 
