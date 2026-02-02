@@ -27,7 +27,7 @@ Esta es una aplicación web moderna para realizar sorteos y rifas digitales de m
 
 1.  **Clonar el repositorio**:
     ```bash
-    git clone <url-del-repo>
+    git clone <https://github.com/Dyplox/raflle-app.git>
     cd raffle-app
     ```
 
