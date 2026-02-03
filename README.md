@@ -28,7 +28,7 @@ Esta es una aplicación web moderna para realizar sorteos y rifas digitales de m
 1.  **Clonar el repositorio**:
     ```bash
     git clone <url-del-repo>
-    cd raffle-app
+    cd gran-rifa
     ```
 
 2.  **Instalar dependencias**:
