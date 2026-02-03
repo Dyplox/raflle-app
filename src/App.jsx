@@ -6,6 +6,7 @@ import RaffleDisplay from './components/RaffleDisplay';
 import RaffleHistory from './components/RaffleHistory';
 import SettingsPanel from './components/SettingsPanel';
 import CountdownOverlay from './components/CountdownOverlay';
+import logoPacoreños from './assets/images/pacomede.jpg';
 
 const RaffleContent = memo(() => {
   const {
@@ -99,9 +100,9 @@ function App() {
           <div className="cards-wrapper">
             <header className="header-container" style={{ width: '100%', maxWidth: '1200px' }}>
               <div className="logo-container">
-                <div className="logo-icon" />
+                <img src={logoPacoreños} alt="Logo Pacoreños" className="logo-image" />
                 <h1 className="logo-text">
-                  Gran <span className="logo-accent">Rifa</span>
+                  Gran Rifa - <span className="client-highlight">Pacoreños en</span> <span className="city-highlight">Medellín</span>
                 </h1>
               </div>
 

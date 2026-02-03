@@ -16,6 +16,7 @@ export const useRaffle = () => {
 const createHistoryEntry = (number) => ({
   id: Date.now(),
   number,
+  winnerName: '', // Optional: name of the winner
   timestamp: new Date().toLocaleTimeString('es-CL', {
     hour: '2-digit',
     minute: '2-digit',
@@ -95,7 +96,7 @@ export const RaffleProvider = ({ children }) => {
         } else {
           clearInterval(countdownIntervalRef.current);
           countdownIntervalRef.current = null;
-          setCurrentCount('¡YA!');
+          setCurrentCount('¡MATRACA!');
           setTimeout(() => {
             setCurrentCount(null);
             callback();
@@ -178,6 +179,12 @@ export const RaffleProvider = ({ children }) => {
     resetRaffle();
   }, [setHistory, resetRaffle]);
 
+  const updateWinnerName = useCallback((id, name) => {
+    setHistory(prev => prev.map(entry =>
+      entry.id === id ? { ...entry, winnerName: name } : entry
+    ));
+  }, [setHistory]);
+
   // Memoize the context value to prevent unnecessary re-renders
   const value = useMemo(() => ({
     digitCount,
@@ -196,7 +203,8 @@ export const RaffleProvider = ({ children }) => {
     setIsCountdownEnabled,
     countdownDuration,
     setCountdownDuration,
-    clearHistory
+    clearHistory,
+    updateWinnerName
   }), [
     digitCount, setDigitCount,
     isRaffling,
@@ -206,7 +214,7 @@ export const RaffleProvider = ({ children }) => {
     history, currentCount,
     isCountdownEnabled, setIsCountdownEnabled,
     countdownDuration, setCountdownDuration,
-    clearHistory
+    clearHistory, updateWinnerName
   ]);
 
   return (

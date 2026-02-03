@@ -6,7 +6,7 @@ const CountdownOverlay = memo(() => {
 
     if (currentCount === null) return null;
 
-    const isYa = currentCount === '¡YA!';
+    const isYa = currentCount === '¡MATRACA!';
 
     // Calculate total animation time (countdown numbers + "¡YA!" moment)
     const totalAnimationTime = countdownDuration + 0.5; // +1 for the "¡YA!" second

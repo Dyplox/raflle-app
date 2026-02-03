@@ -224,12 +224,12 @@ body {
   gap: 0.8rem;
 }
 
-.logo-icon {
-  width: 32px;
-  height: 32px;
-  background: var(--primary-gold);
-  border-radius: 6px;
-  transform: rotate(45deg);
+.logo-image {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--primary-gold);
   box-shadow: 0 0 15px var(--accent-glow);
 }
 
@@ -242,6 +242,14 @@ body {
 
 .logo-accent {
   color: var(--primary-gold);
+}
+
+.client-highlight {
+  color: rgb(88, 137, 43);
+}
+
+.city-highlight {
+  color: rgb(246, 187, 49);
 }
 
 .btn-settings {
@@ -355,8 +363,8 @@ body {
 }
 
 .history-item.latest {
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.05) 100%);
-  border: 1px solid rgba(255, 215, 0, 0.4);
+  background: linear-gradient(135deg, rgba(88, 137, 43, 0.2) 0%, rgba(88, 137, 43, 0.05) 100%);
+  border: 1px solid rgba(88, 137, 43, 0.4);
 }
 
 .history-number {
@@ -368,7 +376,7 @@ body {
 }
 
 .history-item.latest .history-number {
-  color: var(--primary-gold);
+  color: rgb(88, 137, 43);
 }
 
 .history-time {
@@ -385,6 +393,59 @@ body {
   margin-top: 2rem;
   opacity: 0.5;
   font-style: italic;
+}
+
+.history-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.history-winner-name {
+  margin-top: 0.4rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.winner-name-display {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: block;
+  text-align: center;
+}
+
+.winner-name-display:hover {
+  color: var(--primary-gold);
+}
+
+.history-item.latest .winner-name-display {
+  color: rgba(88, 137, 43, 0.8);
+}
+
+.winner-name-input {
+  display: block;
+  width: calc(100% - 1.2rem);
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--primary-gold);
+  border-radius: 4px;
+  padding: 0.4rem 0.6rem;
+  color: white;
+  font-size: 0.8rem;
+  text-align: center;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.winner-name-input::placeholder {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+.winner-name-input:focus {
+  box-shadow: 0 0 8px rgba(251, 191, 36, 0.3);
 }
 
 /* Settings Overlay */
