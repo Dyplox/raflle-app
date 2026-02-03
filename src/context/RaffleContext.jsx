@@ -175,7 +175,8 @@ export const RaffleProvider = ({ children }) => {
 
   const clearHistory = useCallback(() => {
     setHistory([]);
-  }, [setHistory]);
+    resetRaffle();
+  }, [setHistory, resetRaffle]);
 
   // Memoize the context value to prevent unnecessary re-renders
   const value = useMemo(() => ({
