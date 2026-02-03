@@ -48,7 +48,7 @@ export const RaffleProvider = ({ children }) => {
       setHistory(prev => [{
         id: Date.now(),
         number: newWinner,
-        timestamp: new Date().toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+        timestamp: new Date().toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })
       }, ...prev]);
     }, 800); // 800ms feels more "deliberate" for a raffle than 100ms
   }, [isRaffling, digitCount, generateWinner]);
@@ -84,7 +84,7 @@ export const RaffleProvider = ({ children }) => {
           setHistory(h => [{
             id: Date.now(),
             number: winner,
-            timestamp: new Date().toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+            timestamp: new Date().toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })
           }, ...h]);
         }
         setIsRaffling(false);
