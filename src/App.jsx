@@ -1,9 +1,12 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import confetti from 'canvas-confetti';
 import { RaffleProvider, useRaffle } from './context/RaffleContext';
 import Layout from './components/Layout';
 import RaffleDisplay from './components/RaffleDisplay';
 import RaffleHistory from './components/RaffleHistory';
+
+
+import SettingsPanel from './components/SettingsPanel';
 
 const RaffleContent = () => {
   const {
@@ -120,14 +123,10 @@ const RaffleContent = () => {
 
   return (
     <div className="cards-stack">
-      <div className="card">
-        <h2 className="card-title">
-          {isFinished ? '¡Tenemos un Ganador!' : 'Próximo Ganador'}
-        </h2>
-
+      <div className="card card-raffle">
         <RaffleDisplay />
 
-        <div style={{ marginTop: '3rem' }}>
+        <div style={{ marginTop: '2rem' }}>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
             <button
               className="btn-primary"
@@ -141,31 +140,58 @@ const RaffleContent = () => {
         </div>
       </div>
 
-      {isFinished && (
-        <div className="card" style={{ padding: '4rem', animation: 'slideIn 0.5s ease' }}>
-          <div className="winner-announcement" style={{ marginTop: 0 }}>
-            <div className="winner-result-box" style={{ width: '100%', justifyContent: 'center' }}>
+      <div className="card card-result">
+        <h2 className={`card-title ${isFinished ? 'has-winner' : ''}`}>
+          {isFinished ? '¡Tenemos un Ganador!' : 'Próximo Ganador'}
+        </h2>
+
+        {isFinished && (
+          <div className="winner-announcement" style={{ marginTop: 0, animation: 'slideIn 0.5s ease' }}>
+            <div className="winner-result-box" style={{ justifyContent: 'center' }}>
               <span style={{ fontSize: '1.5rem' }}>🎉</span>
               <span className="winner-text">¡Felicidades al número {winner}!</span>
               <span style={{ fontSize: '1.5rem' }}>🎉</span>
             </div>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
 
 function App() {
+  const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+
   return (
     <RaffleProvider>
       <Layout>
         <div className="main-content-container">
           <RaffleHistory />
           <div className="cards-wrapper">
+            <header className="header-container" style={{ width: '100%', maxWidth: '1200px' }}>
+              <div className="logo-container">
+                <div className="logo-icon" />
+                <h1 className="logo-text">
+                  Gran <span className="logo-accent">Rifa</span>
+                </h1>
+              </div>
+
+              <button
+                onClick={() => setIsSettingsOpen(true)}
+                className="btn-settings"
+                aria-label="Abrir configuración"
+              >
+                ⚙️ Configurar
+              </button>
+            </header>
+
             <RaffleContent />
           </div>
         </div>
+        <SettingsPanel
+          isOpen={isSettingsOpen}
+          onClose={() => setIsSettingsOpen(false)}
+        />
       </Layout>
     </RaffleProvider>
   );

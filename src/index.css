@@ -111,18 +111,39 @@ body {
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 24px;
-  padding: 4rem;
+  padding: 3rem 0rem;
+  /* Balanced base padding */
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
 }
 
+.card-raffle {
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-result {
+  min-height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .card-title {
   color: var(--text-muted);
-  font-weight: 400;
-  margin-bottom: 2rem;
+  font-weight: 500;
+  margin: 0;
   font-size: 1.8rem;
+  transition: margin 0.5s ease;
+}
+
+.card-title.has-winner {
+  margin-bottom: 2rem;
 }
 
 .digit-container {
@@ -170,6 +191,8 @@ body {
   display: flex;
   align-items: center;
   gap: 1rem;
+  margin: 0 2rem;
+  max-width: fit-content;
 }
 
 .winner-text {
@@ -185,15 +208,17 @@ body {
 }
 
 .header-container {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   position: relative;
   margin-bottom: 3rem;
   padding: 1rem 0;
+  width: 100%;
 }
 
 .logo-container {
+  grid-column: 2;
   display: flex;
   align-items: center;
   gap: 0.8rem;
@@ -220,8 +245,8 @@ body {
 }
 
 .btn-settings {
-  position: absolute;
-  right: 0;
+  grid-column: 3;
+  justify-self: end;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
   color: var(--text-muted);
@@ -243,12 +268,11 @@ body {
   display: flex;
   flex-direction: row;
   width: 100%;
-  align-items: flex-start;
-  /* Changed from center to align top */
+  align-items: stretch;
+  /* Stretch to match sibling heights */
   min-height: 85vh;
   margin-top: -2rem;
   gap: 2rem;
-  /* Add gap here for consistent spacing */
 }
 
 .cards-wrapper {
@@ -276,10 +300,11 @@ body {
   background: rgba(255, 255, 255, 0.03);
   border-radius: 1.5rem;
   border: 1px solid rgba(255, 255, 255, 0.05);
-  height: calc(100vh - 240px);
+  max-height: calc(80vh - 40px);
   position: sticky;
   top: 40px;
   overflow: hidden;
+  /* Prevent container scroll */
   display: flex;
   flex-direction: column;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -301,8 +326,12 @@ body {
   flex-direction: column;
   gap: 0.8rem;
   overflow-y: auto;
+  /* Scroll ONLY the list */
   padding-right: 0.5rem;
   flex: 1;
+  /* Take remaining height */
+  min-height: 0;
+  /* Important for flex child scrolling */
 }
 
 .history-list::-webkit-scrollbar {
