@@ -137,11 +137,34 @@ const SettingsPanel = memo(({ isOpen, onClose }) => {
                                 padding: '0.8rem',
                                 borderRadius: '8px',
                                 cursor: 'pointer',
-                                transition: 'all 0.2s ease'
+                                transition: 'all 0.2s ease',
+                                marginBottom: '0.75rem'
                             }}
                             onClick={handleClearHistory}
                         >
                             🗑️ Borrar Historial de Sorteos
+                        </button>
+                        <button
+                            className="btn-secondary"
+                            style={{
+                                background: 'rgba(239, 68, 68, 0.15)',
+                                color: '#fca5a5',
+                                border: '1px solid rgba(239, 68, 68, 0.3)',
+                                width: '100%',
+                                padding: '0.8rem',
+                                borderRadius: '8px',
+                                cursor: 'pointer',
+                                transition: 'all 0.2s ease'
+                            }}
+                            onClick={() => {
+                                if (window.confirm('¿Estás seguro? Esto borrará TODOS los datos guardados y recargará la aplicación.')) {
+                                    localStorage.clear();
+                                    sessionStorage.clear();
+                                    window.location.reload();
+                                }
+                            }}
+                        >
+                            🧹 Borrar Cache y Datos
                         </button>
                     </div>
                 </div>
